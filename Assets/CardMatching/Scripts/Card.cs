@@ -4,64 +4,57 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public static bool hold = false;  // halts card flipping process
+    private string suit;
+    private string rank;
+    private bool faceUp = false;
 
-    [SerializeField]
-    private int _state;
 
-    [SerializeField]
-    private int _cardValue;
-
-    [SerializeField]
-    private bool _initialized = false;
-
-    private Texture _cardBack;
-    private Texture _cardFace;
-
-    private GameObject _manager;
-	void Start()
-	{
-        _state = 1;
-        _manager = GameObject.Find("GameManager");  // GameObject.FindObjectWithTag("Manager");
-	}
-
-    public void SetupGraphics()
+    public void SetSuitAndRank(string inSuit, string inRank)
     {
-        _cardBack = _manager.GetComponent<MatchManager>().GetCardBack();
-        _cardFace = _manager.GetComponent<MatchManager>().GetCardFace(_cardValue);
-        FlipCard();
+        suit = inSuit;
+        rank = inRank;
+
+        // set the graphics for this suit and rank
+        string path = "Cards/" + suit + rank;
+        GetComponent<MeshFilter>().mesh = Resources.Load<Mesh>(path);
+
+        // add collision so we can detect mouse clicks
+        gameObject.AddComponent<MeshCollider>();
     }
 
-    public void FlipCard()
+    public bool Matches(Card otherCard)
     {
-        if (_state == 0)
-            _state = 1;
-        else if (_state == 1)
-            _state = 0;
-        // if (_state == 0 && !hold)
-            // GetComponent<Image>().sprite = _cardBack;
-        // else if (_state == 1 && !hold)
-            // GetComponent<Image>().sprite = _cardFace;
-    }
-    public int CardValue { get { return _cardValue; } set { _cardValue = value; } }
-
-    public int State { get { return _state; } set { _state = value; } }
-
-    public bool Initialized { get { return _initialized; } set { _initialized = value; } }
-
-    public void FalseCheck()
-    {
-        StartCoroutine(Pause());
+        return (rank == otherCard.rank) && (suit == otherCard.suit);
     }
 
-    IEnumerator Pause() 
+    public void Flip()
     {
-        yield return new WaitForSeconds(1);
-        // if (_state == 0)
-            // GetComponent<Image>().sprite = _cardBack;
-        // else if(_state == 1)
-            // GetComponent<Image>().sprite = _cardFace;
-        hold = false;
+        faceUp = !faceUp;
+        transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
     }
 
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    // Update is called once per fram
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform == transform)
+                {
+                    if (!faceUp)
+                    {
+                        MemoryGame.instance.Select(this);
+                    }
+                }
+            }
+        }
+    }
 }
