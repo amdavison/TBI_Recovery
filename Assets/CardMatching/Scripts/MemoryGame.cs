@@ -17,22 +17,25 @@ public class MemoryGame : MonoBehaviour
     private Card selectOne;
     private Card selectTwo;
     private double selectTime;
-    private int numMatches;
+    private int numMatches = 18;
 
     // These are the audio sources
-    private AudioSource[] audioSources;
     private AudioSource success;
     private AudioSource failure;
+    private AudioSource complete;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
 
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        success = audioSources[0];
+        failure = audioSources[1];
+        complete = audioSources[2];
+
         // Get all cards on GameBoard
         cards = transform.GetComponentsInChildren<Card>();
-
-        numMatches = cards.Length / 2;
 
         // Deal random cards, in pairs
         int n = 0;
@@ -47,6 +50,8 @@ public class MemoryGame : MonoBehaviour
             cards[n++].SetSuitAndRank(suit, rank);
             cards[n++].SetSuitAndRank(suit, rank);
         }
+
+        numMatches = cards.Length / 2;
     }
 
     private void Shuffle<T>(T[] array)
@@ -103,14 +108,9 @@ public class MemoryGame : MonoBehaviour
 
     private void CheckMatch()
     {
-        // get and unpack audio sounds
-        audioSources = GetComponents<AudioSource>();
-        success = audioSources[0];
-        failure = audioSources[1];
-
         if (selectOne.Matches(selectTwo))
         {
-            // sucess sound needed here
+            // play sucess sound
             success.Play();
 
             // remove cards from board
@@ -121,7 +121,7 @@ public class MemoryGame : MonoBehaviour
         }
         else
         {
-            // failure sound needed here
+            // play failure sound
             failure.Play();
 
             // return cards face down
@@ -133,7 +133,8 @@ public class MemoryGame : MonoBehaviour
 
         if (numMatches == 0)
         {
-            // call completion scene
+            // call completion scene might need to move complete sound to new scene
+            complete.Play();
         }
     }
 }
