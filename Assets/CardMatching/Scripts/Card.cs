@@ -8,16 +8,14 @@ public class Card : MonoBehaviour
     private string rank;
     private bool faceUp = false;
 
-
-    public void SetSuitAndRank(string inSuit, string inRank)
+    public void SetSuitAndRank(string newSuit, string newRank)
     {
-        suit = inSuit;
-        rank = inRank;
+        suit = newSuit;
+        rank = newRank;
 
         // set the graphics for this suit and rank
-        string path = "Cards/" + suit + rank;
+        string path = "Free_Playing_Cards/PlayingCards_" + rank + suit;
         GetComponent<MeshFilter>().mesh = Resources.Load<Mesh>(path);
-
         // add collision so we can detect mouse clicks
         gameObject.AddComponent<MeshCollider>();
     }
@@ -29,8 +27,10 @@ public class Card : MonoBehaviour
 
     public void Flip()
     {
+        // Add card flipping sound
+
         faceUp = !faceUp;
-        transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(-transform.forward, -Vector3.right);
     }
 
     public void Hide()
@@ -38,7 +38,7 @@ public class Card : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Update is called once per fram
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

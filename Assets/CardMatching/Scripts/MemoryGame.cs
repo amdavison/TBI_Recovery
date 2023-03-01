@@ -4,38 +4,41 @@ using UnityEngine;
 
 public class MemoryGame : MonoBehaviour
 {
-    readonly string[] cardSuits = new string[] { "Club", "Diamond",
-                                                 "Spade", "Heart" };
-    readonly string[] cardRanks = new string[] { "2", "3", "4", "5", "6", "7",
-                                                 "8", "9", "10", "J", "Q", "K",
-                                                 "A" };
+    // Suit and Rank names must match the Free_Playing_Cards naming convention
+    string[] cardSuits = new string[] { "Club", "Diamond", "Spades", "Heart" };
+    string[] cardRanks = new string[] { "2", "3", "4", "5", "6", "7", "8",
+                                        "9", "10", "J", "Q", "K", "A" };
 
+    // There is only one Memory Game at a time
     static public MemoryGame instance;
-
-    public Card[] cards;
+    
+    // These are local state
+    private Card[] cards;
     private Card selectOne;
     private Card selectTwo;
     private double selectTime;
+    private int numMatches;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
 
-        // Get all cards on Table
+        // Get all cards on GameBoard
         cards = transform.GetComponentsInChildren<Card>();
-        
+
+        numMatches = cards.Length / 2;
 
         // Deal random cards, in pairs
         int n = 0;
         Shuffle(cards);
         for (int i = 0; i < cards.Length / 2; ++i)
         {
-            // choose a random suit and rank
+            // chose a random suit and rank
             string suit = GetRandomFromArray(cardSuits);
             string rank = GetRandomFromArray(cardRanks);
 
-            // assign it to two cards
+            // assign to two cards
             cards[n++].SetSuitAndRank(suit, rank);
             cards[n++].SetSuitAndRank(suit, rank);
         }
@@ -63,12 +66,19 @@ public class MemoryGame : MonoBehaviour
         // If we don't already have two selected cards
         if (selectTwo == null)
         {
-            selectOne = card;
-        }
-        else
-        {
-            selectTwo = card;
-            selectTime = Time.time;
+            // flip card
+            card.Flip();
+
+            // save card in selectOne or selectTwo
+            if (selectOne == null)
+            {
+                selectOne = card;
+            } 
+            else
+            {
+                selectTwo = card;
+                selectTime = Time.time;
+            }
         }
     }
 
@@ -78,7 +88,7 @@ public class MemoryGame : MonoBehaviour
         // check for match or mismatch
         if (selectTwo != null)
         {
-            // wait one second so user can see card
+            // wait one secod so user can see card
             if (Time.time > selectTime + 1.0)
             {
                 CheckMatch();
@@ -90,18 +100,28 @@ public class MemoryGame : MonoBehaviour
     {
         if (selectOne.Matches(selectTwo))
         {
-            // remove cards from the board
+            // sucess sound needed here
+
+            // remove cards from board
             selectOne.Hide();
             selectTwo.Hide();
+
+            numMatches--;
         }
         else
         {
-            // return cards to face down
-            selectOne.Flip();
-            selectOne.Flip();
-        }
+            // failure sound needed here
 
+            // return cards face down
+            selectOne.Flip();
+            selectTwo.Flip();
+        }
         // clear selection
         selectOne = selectTwo = null;
+
+        if (numMatches == 0)
+        {
+            // call completion scene
+        }
     }
 }
