@@ -7,6 +7,7 @@ public class Card : MonoBehaviour
     private string suit;
     private string rank;
     private bool faceUp = false;
+    private AudioSource cardFlip;
 
     public void SetSuitAndRank(string newSuit, string newRank)
     {
@@ -28,7 +29,8 @@ public class Card : MonoBehaviour
     public void Flip()
     {
         // Add card flipping sound
-
+        cardFlip = GetComponent<AudioSource>();
+        cardFlip.Play();
         faceUp = !faceUp;
         transform.rotation = Quaternion.LookRotation(-transform.forward, -Vector3.right);
     }
