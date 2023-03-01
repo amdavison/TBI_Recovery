@@ -28,9 +28,13 @@ public class Card : MonoBehaviour
 
     public void Flip()
     {
-        // Add card flipping sound
-        cardFlip = GetComponent<AudioSource>();
-        cardFlip.Play();
+        if (!faceUp)
+        {
+            // Add card flipping sound
+            cardFlip = GetComponent<AudioSource>();
+            cardFlip.Play();
+        }
+        
         faceUp = !faceUp;
         transform.rotation = Quaternion.LookRotation(-transform.forward, -Vector3.right);
     }

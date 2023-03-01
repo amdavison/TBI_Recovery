@@ -19,6 +19,11 @@ public class MemoryGame : MonoBehaviour
     private double selectTime;
     private int numMatches;
 
+    // These are the audio sources
+    private AudioSource[] audioSources;
+    private AudioSource success;
+    private AudioSource failure;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,9 +103,15 @@ public class MemoryGame : MonoBehaviour
 
     private void CheckMatch()
     {
+        // get and unpack audio sounds
+        audioSources = GetComponents<AudioSource>();
+        success = audioSources[0];
+        failure = audioSources[1];
+
         if (selectOne.Matches(selectTwo))
         {
             // sucess sound needed here
+            success.Play();
 
             // remove cards from board
             selectOne.Hide();
@@ -111,6 +122,7 @@ public class MemoryGame : MonoBehaviour
         else
         {
             // failure sound needed here
+            failure.Play();
 
             // return cards face down
             selectOne.Flip();
