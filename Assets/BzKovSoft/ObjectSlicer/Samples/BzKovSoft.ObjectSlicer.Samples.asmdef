@@ -1,0 +1,14 @@
+{
+    "name": "BzKovSoft.ObjectSlicer.Samples",
+    "references": [],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "ObjectSlicer.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
