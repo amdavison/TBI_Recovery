@@ -75,6 +75,29 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2132424471685507407, guid: e7c39828446955c4eb062c0ef1f5eb71,
         type: 3}
+      propertyPath: _defaultHandPose
+      value: 
+      objectReference: {fileID: 11400000, guid: ff76555d3da03464ebcfc52fbc00e470,
+        type: 2}
+    - target: {fileID: 2132424471685507407, guid: e7c39828446955c4eb062c0ef1f5eb71,
+        type: 3}
+      propertyPath: _handPoses.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132424471685507407, guid: e7c39828446955c4eb062c0ef1f5eb71,
+        type: 3}
+      propertyPath: _handPoses.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: ff76555d3da03464ebcfc52fbc00e470,
+        type: 2}
+    - target: {fileID: 2132424471685507407, guid: e7c39828446955c4eb062c0ef1f5eb71,
+        type: 3}
+      propertyPath: _handPoses.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d6a76a1674694f4dbc1dbb175fde55b,
+        type: 2}
+    - target: {fileID: 2132424471685507407, guid: e7c39828446955c4eb062c0ef1f5eb71,
+        type: 3}
       propertyPath: _rigInfo._leftArmInfo._ringInfo._distalLocalTip.x
       value: -0.027229534
       objectReference: {fileID: 0}
