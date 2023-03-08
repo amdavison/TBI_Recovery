@@ -17,6 +17,8 @@ public class MemoryGame : MonoBehaviour
     private Card selectOne;
     private Card selectTwo;
     private double selectTime;
+    private double startTime;
+    private bool startGame = true;
     private int numMatches = 18;
 
     // These are the audio sources
@@ -52,6 +54,7 @@ public class MemoryGame : MonoBehaviour
         }
 
         numMatches = cards.Length / 2;
+        startTime = Time.time;
     }
 
     private void Shuffle<T>(T[] array)
@@ -95,6 +98,17 @@ public class MemoryGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (startGame == true)
+        {
+            if (Time.time > startTime + 5.0)
+            {
+                foreach (Card card in cards)
+                {
+                    card.Flip();
+                }
+                startGame = false;
+            }
+        }
         // check for match or mismatch
         if (selectTwo != null)
         {
