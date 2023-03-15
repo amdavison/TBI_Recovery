@@ -12,6 +12,7 @@ public class MemoryGame : MonoBehaviour
 
     public TextMeshProUGUI matchText;
     public TextMeshProUGUI timeText;
+
     // There is only one Memory Game at a time
     static public MemoryGame instance;
     
@@ -116,15 +117,14 @@ public class MemoryGame : MonoBehaviour
                 startGame = false;
             }
         }
-        else
+        //else
+        //{
+        if (Time.time - 5.0 > playTime)
         {
-            if (Time.time > playTime + 1.0)
-            {
-                playTime++;
-                timeText.text = playTime.ToString();
-            }
-            
+            timeText.text = "Time: " + playTime.ToString();
+            playTime++;
         }
+        //}
         // check for match or mismatch
         if (selectTwo != null)
         {
