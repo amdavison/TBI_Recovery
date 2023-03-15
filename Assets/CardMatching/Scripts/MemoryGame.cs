@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MemoryGame : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MemoryGame : MonoBehaviour
     string[] cardRanks = new string[] { "2", "3", "4", "5", "6", "7", "8",
                                         "9", "10", "J", "Q", "K", "A" };
 
+    public TextMeshProUGUI matchText;
+    public TextMeshProUGUI timeText;
     // There is only one Memory Game at a time
     static public MemoryGame instance;
     
@@ -18,6 +21,7 @@ public class MemoryGame : MonoBehaviour
     private Card selectTwo;
     private double selectTime;
     private double startTime;
+    private double playTime;
     private bool startGame = true;
     private int numMatches = 18;
 
@@ -54,7 +58,10 @@ public class MemoryGame : MonoBehaviour
         }
 
         numMatches = cards.Length / 2;
+        SetMatchText();
+
         startTime = Time.time;
+        playTime = startTime;
     }
 
     private void Shuffle<T>(T[] array)
@@ -109,6 +116,15 @@ public class MemoryGame : MonoBehaviour
                 startGame = false;
             }
         }
+        else
+        {
+            if (Time.time > playTime + 1.0)
+            {
+                playTime++;
+                timeText.text = playTime.ToString();
+            }
+            
+        }
         // check for match or mismatch
         if (selectTwo != null)
         {
@@ -132,6 +148,7 @@ public class MemoryGame : MonoBehaviour
             selectTwo.Hide();
 
             numMatches--;
+            SetMatchText();
         }
         else
         {
@@ -150,5 +167,10 @@ public class MemoryGame : MonoBehaviour
             // call completion scene might need to move complete sound to new scene
             complete.Play();
         }
+    }
+
+    private void SetMatchText()
+    {
+        matchText.text = "Matches left: " + numMatches.ToString();
     }
 }
