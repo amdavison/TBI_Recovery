@@ -117,14 +117,14 @@ public class MemoryGame : MonoBehaviour
                 startGame = false;
             }
         }
-        //else
-        //{
+
+        // update playTime counter if during game play
         if (Time.time - 5.0 > playTime)
         {
             timeText.text = "Time: " + playTime.ToString();
             playTime++;
         }
-        //}
+
         // check for match or mismatch
         if (selectTwo != null)
         {
