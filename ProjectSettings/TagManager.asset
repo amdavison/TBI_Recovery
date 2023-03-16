@@ -7,6 +7,7 @@ TagManager:
   - WholeSandwich
   - Knife
   - Plate
+  - Bread
   layers:
   - Default
   - TransparentFX
