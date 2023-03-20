@@ -25,7 +25,7 @@ public class CollisionDetection : MonoBehaviour
         if (col.gameObject.tag == "Bread")
         {
             col.gameObject.SetActive(false);
-            Instantiate(Bread, new Vector3((float)-.25, (float)1, (float)-3.044), Quaternion.identity);
+            Instantiate(Bread, new Vector3((float)-.90, (float)1, (float)-3.044), Quaternion.Euler(90,0,0));
         }
     }
 }
