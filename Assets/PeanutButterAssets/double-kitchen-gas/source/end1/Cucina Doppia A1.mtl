@@ -1,0 +1,42 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 13.10.2017 10:54:54
+
+newmtl Wolf_Cucina_Q1
+	Ns 9.999999
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka E:\Cad\Cucina Gas Doppia\max1\Cucina Doppia03\flats\Wolf01_albedo.png
+	map_Kd E:\Cad\Cucina Gas Doppia\max1\Cucina Doppia03\flats\Wolf01_albedo.png
+	map_Ks E:\Cad\Cucina Gas Doppia\max1\Cucina Doppia03\flats\Wolf01_specular.png
+	map_bump -bm 0.300000 Map__4_Normal_Bump.tga
+
+newmtl Vetri01
+	Ns 57.000000
+	Ni 1.500000
+	d 0.150000
+	Tr 0.850000
+	Tf 0.150000 0.150000 0.150000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.774000 0.774000 0.774000
+	Ke 0.000000 0.000000 0.000000
+
+newmtl Retro
+	Ns 9.999999
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
