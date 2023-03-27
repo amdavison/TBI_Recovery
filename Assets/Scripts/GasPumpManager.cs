@@ -16,13 +16,12 @@ public class GasPumpManager : MonoBehaviour
     public GameObject button;
     public GameObject buttonOutline;
 
-    private UxrGrabbableObject cardGrab;
-    private UxrGrabbableObject handleGrab;
+    public UxrGrabbableObject cardGrab;
+    public UxrGrabbableObject handleGrab;
 
     void Start()
     {
-        cardGrab = card.GetComponent<UxrGrabbableObject>();
-        handleGrab = handle.GetComponent<UxrGrabbableObject>();
+
     }
 
     public void prepareCard()
@@ -50,5 +49,11 @@ public class GasPumpManager : MonoBehaviour
     {
         pumpOutline.SetActive(true);
         capOutline.SetActive(false);
+    }
+
+    public void prepareEnd()
+    {
+        pumpOutline.SetActive(false);
+        handleGrab.IsGrabbable = false;
     }
 }

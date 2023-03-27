@@ -15,6 +15,7 @@ public class GasTaskManager : TaskManager
     public GasPumpManager gasMan;
 
     public AudioSource good;
+    public AudioSource end;
 
     public override void MarkTaskCompletion(int taskID)
     {
@@ -57,8 +58,9 @@ public class GasTaskManager : TaskManager
         }
         else if (taskID == 5 && handle.GetComponent<UxrCustomInteractionEvents>().anchorTag == "GasPump")
         {
-            good.Play();
+            end.Play();
             Debug.Log(taskID + " " + taskNum);
+            gasMan.prepareEnd();
             activMan.MarkActivityCompletion();
         }
 
@@ -72,5 +74,4 @@ public class GasTaskManager : TaskManager
         card.GetComponent<UxrGrabbableObject>().IsGrabbable = false;
         MarkTaskCompletion(0);
     }
-
 }

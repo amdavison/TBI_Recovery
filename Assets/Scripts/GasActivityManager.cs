@@ -12,7 +12,7 @@ public class GasActivityManager : ActivityManager
     {
         base.MarkActivityCompletion();
 
-        if (activityCount == 1)
+        if (activityCount == 1 || true)
         {
             EndSimulation();
         }
@@ -24,6 +24,6 @@ public class GasActivityManager : ActivityManager
         yield return new WaitForSecondsRealtime(5);
         EndAudio.Play();
         yield return new WaitForSecondsRealtime(5);
-        SceneManager.LoadScene("Main");
+        //SceneManager.LoadScene("Main");
     }
 }
