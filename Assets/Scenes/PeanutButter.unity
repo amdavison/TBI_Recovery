@@ -567,8 +567,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271715087}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002, y: -0.001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.002, y: -0.0732, z: 0}
+  m_LocalScale: {x: 0.61142266, y: 0.61142266, z: 0.61142266}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 271947565}
@@ -889,32 +889,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0c9944db809f4a04293224e565bdf010,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 18.683
+      value: 13.068385
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c9944db809f4a04293224e565bdf010,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 18.683
+      value: 13.068385
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c9944db809f4a04293224e565bdf010,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 18.683
+      value: 13.068385
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c9944db809f4a04293224e565bdf010,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.099
+      value: -0.147
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c9944db809f4a04293224e565bdf010,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.574
+      value: 0.437
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c9944db809f4a04293224e565bdf010,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.311
+      value: -3.111
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c9944db809f4a04293224e565bdf010,
         type: 3}
@@ -1363,8 +1363,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690578940}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.868, y: 0.542, z: -2.768}
-  m_LocalScale: {x: 0.7347511, y: 0.7349943, z: 0.9}
+  m_LocalPosition: {x: -1.412, y: 0.389, z: -3.09}
+  m_LocalScale: {x: 0.5204389, y: 0.52061117, z: 0.637488}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1434,7 +1434,7 @@ MonoBehaviour:
     _alignToControllerAxes: {fileID: 0}
     _grabProximityMode: 0
     _grabProximityBox: {fileID: 0}
-    _maxDistanceGrab: 0.2
+    _maxDistanceGrab: 0.8
     _grabProximityTransformUseSelf: 1
     _grabProximityTransform: {fileID: 0}
     _grabberProximityUseDefault: 1
@@ -1821,7 +1821,7 @@ PrefabInstance:
     - target: {fileID: 5646760360632363571, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.928
+      value: -3.68
       objectReference: {fileID: 0}
     - target: {fileID: 5646760360632363571, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
         type: 3}
@@ -2641,7 +2641,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 911f9a67f73e5484ba9dc355bd006dc0, type: 2}
+  - {fileID: 2100000, guid: 88835645c7e3550409ab7052a5eca8dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2679,7 +2679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770947482}
   m_LocalRotation: {x: -0.6955557, y: 0.7063491, z: 0.10130442, w: 0.08372984}
-  m_LocalPosition: {x: -2.1929953, y: 0.6546011, z: -3.2140822}
+  m_LocalPosition: {x: -1.848, y: 0.65, z: -3.223}
   m_LocalScale: {x: 0.010000002, y: 0.01, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2946,6 +2946,86 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8977347133005138567, guid: 0c9944db809f4a04293224e565bdf010, type: 3}
+--- !u!114 &2058170019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058170010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f5a30897a3c024c805c866226dd743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlParentDirection: 1
+  _ignoreGrabbableParentDependency: 0
+  _priority: 0
+  _allowMultiGrab: 1
+  _translationConstraintMode: 0
+  _restrictToBox: {fileID: 0}
+  _restrictToSphere: {fileID: 0}
+  _translationLimitsMin: {x: 0, y: 0, z: 0}
+  _translationLimitsMax: {x: 0, y: 0, z: 0}
+  _rotationConstraintMode: 0
+  _rotationAngleLimitsMin: {x: 0, y: 0, z: 0}
+  _rotationAngleLimitsMax: {x: 0, y: 0, z: 0}
+  _autoRotationProvider: 1
+  _rotationProvider: 0
+  _rotationLongitudinalAxis:
+    _axis: 2
+  _needsTwoHandsToRotate: 0
+  _lockedGrabReleaseDistance: 0.4
+  _translationResistance: 0
+  _rotationResistance: 0
+  _rigidBodySource: {fileID: 0}
+  _rigidBodyDynamicOnRelease: 1
+  _verticalReleaseMultiplier: 1
+  _horizontalReleaseMultiplier: 1
+  _previewGrabPosesMode: 3
+  _previewPosesRegenerationType: 0
+  _previewPosesRegenerationIndex: -1
+  _selectedAvatarForGrips: {fileID: 0}
+  _firstGrabPointIsMain: 1
+  _grabPoint:
+    _editorFoldout: 1
+    _editorName: 
+    _grabMode: 0
+    _useDefaultGrabButtons: 1
+    _bothHandsCompatible: 1
+    _handSide: 0
+    _inputButtons: 65536
+    _hideHandGrabberRenderer: 0
+    _defaultGripPoseInfo:
+      _avatarPrefabGuid: 
+      _handPose: {fileID: 0}
+      _poseBlendValue: -1
+      _gripAlignTransformHandLeft: {fileID: 0}
+      _gripAlignTransformHandRight: {fileID: 0}
+    _snapMode: 3
+    _snapDirection: 0
+    _snapReference: 1
+    _avatarGripPoseEntries: []
+    _alignToController: 0
+    _alignToControllerAxes: {fileID: 0}
+    _grabProximityMode: 0
+    _grabProximityBox: {fileID: 0}
+    _maxDistanceGrab: 0.8
+    _grabProximityTransformUseSelf: 1
+    _grabProximityTransform: {fileID: 0}
+    _grabberProximityUseDefault: 1
+    _grabberProximityIndex: 0
+    _enableOnHandNear: {fileID: 0}
+  _additionalGrabPoints: []
+  _useParenting: 0
+  _autoCreateStartAnchor: 0
+  _startAnchor: {fileID: 0}
+  _tag: 
+  _dropAlignTransformUseSelf: 1
+  _dropAlignTransform: {fileID: 0}
+  _dropSnapMode: 3
+  _dropProximityTransformUseSelf: 1
+  _dropProximityTransform: {fileID: 0}
 --- !u!1 &2110897473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,7 +3074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110897473}
   m_LocalRotation: {x: -0, y: 2.3283067e-10, z: -0, w: 1}
-  m_LocalPosition: {x: -43.5, y: -7.54167, z: 12.35}
+  m_LocalPosition: {x: -1.899, y: 0.701, z: -3.172}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3074,8 +3154,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013440832379}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029653306}
-  m_LocalPosition: {x: 0.00000011920929, y: 0.000000014901161, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.00000011920929, y: 0.000000014901161, z: 0.00000071526}
+  m_LocalScale: {x: 0.7821432, y: 0.76854956, z: 0.7821432}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4000011192056387}
@@ -3458,8 +3538,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147532544577}
   m_LocalRotation: {x: -0, y: -0.9465232, z: -0, w: 0.32263586}
-  m_LocalPosition: {x: -0.12, y: 0.723, z: -2.278}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: -0.17099, y: 0.501, z: -2.3387}
+  m_LocalScale: {x: 69.063995, y: 69.063995, z: 69.063995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1386014676348822200}
@@ -3475,8 +3555,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149354394718}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.802, y: 0.693, z: -2.31}
-  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_LocalPosition: {x: -1.802, y: 0.48, z: -2.602}
+  m_LocalScale: {x: 9.961801, y: 9.961801, z: 9.961801}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5852,7 +5932,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468868560133853600}
   m_LocalRotation: {x: -0.6955557, y: 0.7063491, z: 0.10130442, w: 0.08372984}
-  m_LocalPosition: {x: -2.1929953, y: 0.6546011, z: -3.2140822}
+  m_LocalPosition: {x: -0.617, y: 0.467, z: -3.109}
   m_LocalScale: {x: 0.010000002, y: 0.01, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5967,7 +6047,7 @@ MonoBehaviour:
     _alignToControllerAxes: {fileID: 0}
     _grabProximityMode: 0
     _grabProximityBox: {fileID: 0}
-    _maxDistanceGrab: 0.2
+    _maxDistanceGrab: 0.8
     _grabProximityTransformUseSelf: 1
     _grabProximityTransform: {fileID: 0}
     _grabberProximityUseDefault: 1
@@ -5975,7 +6055,7 @@ MonoBehaviour:
     _enableOnHandNear: {fileID: 0}
   _additionalGrabPoints: []
   _useParenting: 0
-  _autoCreateStartAnchor: 0
+  _autoCreateStartAnchor: 1
   _startAnchor: {fileID: 0}
   _tag: 
   _dropAlignTransformUseSelf: 1
@@ -6380,7 +6460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4049960646438091229}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.778, y: 0.4533, z: -3.196}
+  m_LocalPosition: {x: 0.509, y: 0.32, z: -2.909}
   m_LocalScale: {x: 1, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
