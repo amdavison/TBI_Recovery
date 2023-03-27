@@ -8,11 +8,14 @@ TagManager:
   - CardSlot
   - GasCap
   - GasPump
+  - RoomLight
+  - SamplesInfoPanel
+  - Rope
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Rope
   - Water
   - UI
   - 

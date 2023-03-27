@@ -13,18 +13,19 @@ public class ButtonVr : MonoBehaviour
     Collider presser;
  
     bool isPressed;
+    bool enabled { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
         isPressed = false;
-        
+        enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collider enter");
-        if (!isPressed)
+        if (!isPressed && enabled)
         {
             button.transform.localPosition = new Vector3(0.008f, 0, 0);
             onPress.Invoke();
@@ -37,7 +38,7 @@ public class ButtonVr : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("collider exit");
-        if (other == presser)
+        if (other == presser && enabled)
         {
             button.transform.localPosition = new Vector3(0, 0, 0);
             onRelease.Invoke();
