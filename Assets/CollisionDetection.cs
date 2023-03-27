@@ -7,6 +7,8 @@ public class CollisionDetection : MonoBehaviour
     public GameObject SlicedSandwich;
     public GameObject Bread1;
     public GameObject Bread2;
+    public AudioSource BreadSlice;
+    public AudioSource PlateSound;
 
     // Start is called before the first frame update
     void OnCollisionEnter(Collision col)
@@ -20,12 +22,14 @@ public class CollisionDetection : MonoBehaviour
 
         if (col.gameObject.tag == "Plate")
         {
+            PlateSound.Play();
             SlicedSandwich.SetActive(true);
             //Instantiate(Toast, new Vector3((float)-3.967, (float)1.5, (float)-3.044), Quaternion.identity);
         }
 
         if (col.gameObject.tag == "Bread")
         {
+            BreadSlice.Play();
             col.gameObject.SetActive(false);
             Bread1.SetActive(true);
             Bread2.SetActive(true);
