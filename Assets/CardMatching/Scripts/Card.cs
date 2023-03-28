@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Card : MonoBehaviour
 {
@@ -17,8 +18,9 @@ public class Card : MonoBehaviour
         // set the graphics for this suit and rank
         string path = "Free_Playing_Cards/PlayingCards_" + rank + suit;
         GetComponent<MeshFilter>().mesh = Resources.Load<Mesh>(path);
+        
         // add collision so we can detect mouse clicks
-        gameObject.AddComponent<MeshCollider>();
+        gameObject.AddComponent<BoxCollider>();
     }
 
     public bool Matches(Card otherCard)
@@ -44,9 +46,14 @@ public class Card : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    // On trigger enter
+    // wasSelected boolean for telling whether colliders interacted
+    // On trigger exit to flip wasSelected to false
+
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
