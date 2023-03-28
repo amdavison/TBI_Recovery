@@ -24,6 +24,7 @@ public class MemoryGame : MonoBehaviour
     private double startTime;
     private double playTime;
     private bool startGame = true;
+    private bool endGame = false;
     private int numMatches = 18;
 
     // These are the audio sources
@@ -119,7 +120,7 @@ public class MemoryGame : MonoBehaviour
         }
 
         // update playTime counter if during game play
-        if (Time.time - 5.0 > playTime)
+        if (Time.time - 5.0 > playTime && !endGame)
         {
             timeText.text = "Time: " + playTime.ToString();
             playTime++;
@@ -164,6 +165,9 @@ public class MemoryGame : MonoBehaviour
 
         if (numMatches == 0)
         {
+            // flip endGame flag to stop paly timer
+            endGame = true;
+
             // call completion scene might need to move complete sound to new scene
             complete.Play();
         }

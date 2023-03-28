@@ -6,14 +6,13 @@ public class Card : MonoBehaviour
 {
     private string suit;
     private string rank;
-    private bool faceUp = true;  // false;
+    private bool faceUp = true;
     private AudioSource cardFlip;
 
     public void SetSuitAndRank(string newSuit, string newRank)
     {
         suit = newSuit;
         rank = newRank;
-        //suitRank = newCard
 
         // set the graphics for this suit and rank
         string path = "Free_Playing_Cards/PlayingCards_" + rank + suit;
@@ -37,7 +36,7 @@ public class Card : MonoBehaviour
         }
 
         faceUp = !faceUp;
-        transform.rotation = Quaternion.LookRotation(-transform.forward, -Vector3.right);
+        transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
     }
 
     public void Hide()
