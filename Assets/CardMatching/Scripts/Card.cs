@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UltimateXR.Avatar;
+using UltimateXR.Core;
+using UltimateXR.Devices;
 
 public class Card : MonoBehaviour
 {
     private string suit;
     private string rank;
     private bool faceUp = true;
+    private bool isSelected = false;
     private AudioSource cardFlip;
+
+    Collider selector;
 
     public void SetSuitAndRank(string newSuit, string newRank)
     {
@@ -47,27 +53,51 @@ public class Card : MonoBehaviour
     }
 
     // On trigger enter
+    private void OnTriggerEnter(Collider other)
+    {
+        bool leftPressed = UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Left, UxrInputButtons.Trigger);
+        bool rightPressed = UxrAvatar.LocalAvatarInput.GetButtonsPressDown(UxrHandSide.Right, UxrInputButtons.Trigger);
+
+        if (leftPressed || rightPressed)
+        {
+            if (!isSelected && !faceUp)
+            {
+                MemoryGame.instance.Select(this);
+                selector = other;
+                isSelected = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other == selector && faceUp)
+        {
+            isSelected = false;
+        }
+
+    }
     // wasSelected boolean for telling whether colliders interacted
     // On trigger exit to flip wasSelected to false
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform == transform)
-                {
-                    if (!faceUp)
-                    {
-                        MemoryGame.instance.Select(this);
-                    }
-                }
-            }
-        }
-    }
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //        RaycastHit hit;
+    //        if (Physics.Raycast(ray, out hit))
+    //        {
+    //            if (hit.transform == transform)
+    //            {
+    //                if (!faceUp)
+    //                {
+    //                    MemoryGame.instance.Select(this);
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 }
