@@ -11,6 +11,12 @@ TagManager:
   - RoomLight
   - SamplesInfoPanel
   - Rope
+  - Plate
+  - WholeSandwich
+  - Knife
+  - Bread
+  - JamJar
+  - PBJar
   layers:
   - Default
   - TransparentFX

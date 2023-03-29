@@ -7,6 +7,8 @@ public class CollisionDetection : MonoBehaviour
     public GameObject SlicedSandwich;
     public GameObject Bread1;
     public GameObject Bread2;
+    public GameObject JamSlice;
+    public GameObject PBSlice;
     public AudioSource BreadSlice;
     public AudioSource PlateSound;
 
@@ -34,6 +36,16 @@ public class CollisionDetection : MonoBehaviour
             Bread1.SetActive(true);
             Bread2.SetActive(true);
             //Instantiate(Bread, new Vector3((float)-.90, (float)1, (float)-3.044), Quaternion.Euler(90,0,0));
+        }
+
+        if (col.gameObject.tag == "JamJar")
+        {
+            JamSlice.SetActive(true);
+        }
+
+        if (col.gameObject.tag == "PBJar")
+        {
+            PBSlice.SetActive(true);
         }
     }
 }
