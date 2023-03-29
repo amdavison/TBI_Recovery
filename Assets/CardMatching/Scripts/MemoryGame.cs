@@ -26,6 +26,7 @@ public class MemoryGame : MonoBehaviour
     private bool startGame = true;
     private bool endGame = false;
     private int numMatches = 18;
+    private double waitTime = 8.0;
 
     // These are the audio sources
     private AudioSource success;
@@ -109,7 +110,7 @@ public class MemoryGame : MonoBehaviour
     {
         if (startGame == true)
         {
-            if (Time.time > startTime + 5.0)
+            if (Time.time > startTime + waitTime)
             {
                 foreach (Card card in cards)
                 {
@@ -120,7 +121,7 @@ public class MemoryGame : MonoBehaviour
         }
 
         // update playTime counter if during game play
-        if (Time.time - 5.0 > playTime && !endGame)
+        if (Time.time - waitTime > playTime && !endGame)
         {
             timeText.text = "Time: " + playTime.ToString();
             playTime++;

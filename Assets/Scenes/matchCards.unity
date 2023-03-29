@@ -1268,13 +1268,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _listControllerEvents.Array.data[4]._handPose
       value: 
-      objectReference: {fileID: 11400000, guid: ff76555d3da03464ebcfc52fbc00e470,
+      objectReference: {fileID: 11400000, guid: ab3b4a5121be9594b83e601b0fa5648e,
         type: 2}
     - target: {fileID: 5646760360632363569, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
         type: 3}
       propertyPath: _listControllerEvents.Array.data[5]._handPose
       value: 
-      objectReference: {fileID: 11400000, guid: ff76555d3da03464ebcfc52fbc00e470,
+      objectReference: {fileID: 11400000, guid: ab3b4a5121be9594b83e601b0fa5648e,
         type: 2}
     - target: {fileID: 5646760360632363569, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
         type: 3}
@@ -1900,9 +1900,9 @@ RectTransform:
   m_Father: {fileID: 1304516069}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -120, y: -20}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 139, y: 300}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311777895
@@ -1952,13 +1952,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 66
+  m_fontSizeBase: 66
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -49.319748, y: 7.5876465, z: -24.72528, w: -3.7938232}
+  m_margin: {x: -49.319748, y: 7.5876465, z: -328.02252, w: -3.7938232}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2147,6 +2147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288452790439926338, guid: 8e5a9ad116c83b148bf0b0ef1da5f8c3,
+        type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7716129328419237593, guid: 8e5a9ad116c83b148bf0b0ef1da5f8c3,
         type: 3}
@@ -2572,6 +2577,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 356798061}
     m_Modifications:
+    - target: {fileID: 6303784479529685964, guid: 11d994c52cf9502439711dfe9f23a53c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8516629228309471941, guid: 11d994c52cf9502439711dfe9f23a53c,
         type: 3}
       propertyPath: m_Name
@@ -2909,6 +2919,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &543730542 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5646760361345164855, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 11069243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &581636781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,10 +3465,10 @@ RectTransform:
   m_Father: {fileID: 1304516069}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -20}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -245, y: 300}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778072471
 MonoBehaviour:
@@ -3501,13 +3517,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 66
+  m_fontSizeBase: 66
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -3537,7 +3553,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -49.319748, y: 7.5876465, z: -24.72528, w: -3.7938232}
+  m_margin: {x: -122.994156, y: 7.5876465, z: -24.72528, w: -3.7938232}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4841,9 +4857,9 @@ Canvas:
   m_GameObject: {fileID: 1304516065}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 543730542}
+  m_PlaneDistance: 0.25
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -5639,6 +5655,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 356798061}
     m_Modifications:
+    - target: {fileID: 6303784479529685964, guid: 11d994c52cf9502439711dfe9f23a53c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8516629228309471941, guid: 11d994c52cf9502439711dfe9f23a53c,
         type: 3}
       propertyPath: m_Name
