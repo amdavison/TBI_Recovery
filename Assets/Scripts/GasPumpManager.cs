@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UltimateXR.Manipulation;
-
+using TMPro;
 
 public class GasPumpManager : MonoBehaviour
 {
@@ -15,6 +15,9 @@ public class GasPumpManager : MonoBehaviour
 
     public GameObject button;
     public GameObject buttonOutline;
+
+    public TextMeshPro price;
+    public TextMeshPro gallons;
 
     public UxrGrabbableObject cardGrab;
     public UxrGrabbableObject handleGrab;
@@ -55,5 +58,19 @@ public class GasPumpManager : MonoBehaviour
     {
         pumpOutline.SetActive(false);
         handleGrab.IsGrabbable = false;
+    }
+
+    public IEnumerator GasCountdown()
+    {
+        float count = 0.0f;
+        while (count < 20)
+        {
+            count += Time.deltaTime;
+            Debug.Log(count);
+            price.text = $"{count*3.39:0.##}";
+            gallons.text = $"{count:0.##}";
+        }
+        yield return null;
+
     }
 }
