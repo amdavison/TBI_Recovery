@@ -7,8 +7,10 @@ public class CollisionDetection : MonoBehaviour
     public GameObject SlicedSandwich;
     public GameObject Bread1;
     public GameObject Bread2;
-    public GameObject JamSlice;
-    public GameObject PBSlice;
+    public GameObject JamSliceKnife;
+    public GameObject JamSliceBread;
+    public GameObject PBSliceKnife;
+    public GameObject PBSliceBread;
     public AudioSource BreadSlice;
     public AudioSource PlateSound;
 
@@ -19,13 +21,18 @@ public class CollisionDetection : MonoBehaviour
         {
 
             col.gameObject.SetActive(false);
+            PBSliceBread.SetActive(false);
+            JamSliceBread.SetActive(false);
+            Bread1.SetActive(false);
+            PlateSound.Play();
+            SlicedSandwich.SetActive(true);
 
         }
 
         if (col.gameObject.tag == "Plate")
         {
             PlateSound.Play();
-            SlicedSandwich.SetActive(true);
+            //SlicedSandwich.SetActive(true);
             //Instantiate(Toast, new Vector3((float)-3.967, (float)1.5, (float)-3.044), Quaternion.identity);
         }
 
@@ -38,14 +45,46 @@ public class CollisionDetection : MonoBehaviour
             //Instantiate(Bread, new Vector3((float)-.90, (float)1, (float)-3.044), Quaternion.Euler(90,0,0));
         }
 
-        if (col.gameObject.tag == "JamJar")
-        {
-            JamSlice.SetActive(true);
-        }
-
         if (col.gameObject.tag == "PBJar")
         {
-            PBSlice.SetActive(true);
+            PBSliceKnife.SetActive(true);
+
+           
         }
+
+        if (col.gameObject.tag == "BottomBread")
+        {
+            PBSliceKnife.SetActive(false);
+            PBSliceBread.SetActive(true);
+        }
+
+        if (col.gameObject.tag == "JamJar")
+        {
+            JamSliceKnife.SetActive(true);
+
+            
+        }
+
+        if (JamSliceKnife.activeSelf == true)
+        {
+            if (col.gameObject.tag == "PBSlice")
+            {
+                JamSliceKnife.SetActive(false);
+                JamSliceBread.SetActive(true);
+            }
+        }
+
+        if (SlicedSandwich.activeSelf == true)
+        {
+            EndSimulation();
+        }
+    }
+    protected IEnumerator EndSimulation()
+    {
+        // just loads the main scene
+        yield return new WaitForSecondsRealtime(5);
+        // add completion audio
+        yield return new WaitForSecondsRealtime(5);
+        //SceneManager.LoadScene("Main");
     }
 }
