@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UltimateXR.Manipulation;
+using UnityEngine.UI;
 using TMPro;
 
 public class GasPumpManager : MonoBehaviour
 {
+    public TaskManager taskMan;
+
     public GameObject handle;
     public GameObject pumpOutline;
     public GameObject capOutline;
@@ -16,11 +20,14 @@ public class GasPumpManager : MonoBehaviour
     public GameObject button;
     public GameObject buttonOutline;
 
-    public TextMeshPro price;
-    public TextMeshPro gallons;
+    public TextMeshProUGUI price;
+    public TextMeshProUGUI gallons;
 
     public UxrGrabbableObject cardGrab;
     public UxrGrabbableObject handleGrab;
+
+    public Boolean filling = false;
+    private float count = 0.0f;
 
     void Start()
     {
@@ -59,18 +66,37 @@ public class GasPumpManager : MonoBehaviour
         pumpOutline.SetActive(false);
         handleGrab.IsGrabbable = false;
     }
-
-    public IEnumerator GasCountdown()
+    public void pumpLifted()
     {
-        float count = 0.0f;
-        while (count < 20)
-        {
-            count += Time.deltaTime;
-            Debug.Log(count);
-            price.text = $"{count*3.39:0.##}";
-            gallons.text = $"{count:0.##}";
-        }
-        yield return null;
+        filling = false;
+        Debug.Log(filling);
+    }
+    public void pumpPlaced()
+    {
+        filling = true;
+        Debug.Log(filling);
+    }
 
+
+
+    void Update()
+    {
+        if (filling)
+        {
+            if (count < 13.37)
+            {
+                price.text = (count * 3.39).ToString("0.00");
+                gallons.text = (count).ToString("0.00");
+
+                count += Time.deltaTime;
+
+            }
+            else
+            {
+                filling = false;
+                Debug.Log("Time Done");
+                taskMan.MarkTaskCompletion(5); 
+            }
+        }
     }
 }

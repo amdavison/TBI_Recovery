@@ -32,8 +32,6 @@ public class GasTaskManager : TaskManager
         }
         else if (taskID == 1)
         {
-            StartCoroutine(gasMan.GasCountdown());
-
             good.Play();
             gasMan.prepareButton();
             Debug.Log(taskID + " " + taskNum);
@@ -54,13 +52,15 @@ public class GasTaskManager : TaskManager
         else if (taskID == 4)
         {
             good.Play();
-            gasMan.prepareReplace();
+            gasMan.filling = true;
             Debug.Log(taskID + " " + taskNum);
-            handle.GetComponent<UxrCustomInteractionEvents>().anchorTag = "GasPump";
-        }
+        } 
         else if (taskID == 5)
         {
-            StartCoroutine(gasMan.GasCountdown());   
+            good.Play();
+            Debug.Log(taskID + " " + taskNum);
+            gasMan.prepareReplace();
+            handle.GetComponent<UxrCustomInteractionEvents>().anchorTag = "GasPump";
         }
 
         else if (taskID == 6 && handle.GetComponent<UxrCustomInteractionEvents>().anchorTag == "GasPump")
