@@ -5,12 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: af81c9bc5293dde40a08377d8f6a3082
+  - enabled: 1
     path: Assets/Scenes/GasStation.unity
     guid: 9f823e73702776d489a14f3d7181448d
   - enabled: 1
     path: Assets/Scenes/PeanutButter.unity
     guid: 9a27763f7f7ae864a98c69181e1f2f8f
+  - enabled: 1
+    path: Assets/Scenes/matchCards.unity
+    guid: 1b87b3836c3a147a498ce306ecc3ece2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

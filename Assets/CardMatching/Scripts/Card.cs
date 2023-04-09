@@ -6,20 +6,24 @@ public class Card : MonoBehaviour
 {
     private string suit;
     private string rank;
-    private bool faceUp = true;  // false;
+    private bool faceUp = true;
+    private bool isSelected = false;
     private AudioSource cardFlip;
+
+    Collider selector;
 
     public void SetSuitAndRank(string newSuit, string newRank)
     {
         suit = newSuit;
         rank = newRank;
-        //suitRank = newCard
 
         // set the graphics for this suit and rank
         string path = "Free_Playing_Cards/PlayingCards_" + rank + suit;
         GetComponent<MeshFilter>().mesh = Resources.Load<Mesh>(path);
+
         // add collision so we can detect mouse clicks
-        gameObject.AddComponent<MeshCollider>();
+        gameObject.AddComponent<BoxCollider>();
+        gameObject.GetComponent<BoxCollider>().isTrigger = true;
     }
 
     public bool Matches(Card otherCard)
@@ -37,7 +41,7 @@ public class Card : MonoBehaviour
         }
 
         faceUp = !faceUp;
-        transform.rotation = Quaternion.LookRotation(-transform.forward, -Vector3.right);
+        transform.rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
     }
 
     public void Hide()
@@ -45,23 +49,23 @@ public class Card : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!isSelected && !faceUp)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform == transform)
-                {
-                    if (!faceUp)
-                    {
-                        MemoryGame.instance.Select(this);
-                    }
-                }
-            }
+            Debug.Log("Card face down...");
+            MemoryGame.instance.Select(this);
+            selector = other;
+            isSelected = !isSelected;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other == selector && faceUp)
+        {
+            isSelected = false;
+            selector = null;
         }
     }
 }

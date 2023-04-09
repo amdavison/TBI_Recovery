@@ -17,6 +17,8 @@ TagManager:
   - Bread
   - JamJar
   - PBJar
+  - PBSlice
+  - BottomBread
   layers:
   - Default
   - TransparentFX

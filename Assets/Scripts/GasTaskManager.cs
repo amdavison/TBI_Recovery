@@ -52,11 +52,18 @@ public class GasTaskManager : TaskManager
         else if (taskID == 4)
         {
             good.Play();
-            gasMan.prepareReplace();
+            gasMan.filling = true;
             Debug.Log(taskID + " " + taskNum);
+        } 
+        else if (taskID == 5)
+        {
+            good.Play();
+            Debug.Log(taskID + " " + taskNum);
+            gasMan.prepareReplace();
             handle.GetComponent<UxrCustomInteractionEvents>().anchorTag = "GasPump";
         }
-        else if (taskID == 5 && handle.GetComponent<UxrCustomInteractionEvents>().anchorTag == "GasPump")
+
+        else if (taskID == 6 && handle.GetComponent<UxrCustomInteractionEvents>().anchorTag == "GasPump")
         {
             end.Play();
             Debug.Log(taskID + " " + taskNum);
