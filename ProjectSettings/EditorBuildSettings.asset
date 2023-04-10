@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PeanutButter.unity
     guid: 9a27763f7f7ae864a98c69181e1f2f8f
+  - enabled: 1
+    path: Assets/Scenes/matchCards.unity
+    guid: 1b87b3836c3a147a498ce306ecc3ece2
+  - enabled: 1
+    path: Assets/Scenes/LevelCompletion.unity
+    guid: ba07ad0ac3ac884448b047fafb6719b8
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}

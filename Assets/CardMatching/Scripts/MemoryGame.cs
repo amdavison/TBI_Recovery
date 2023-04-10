@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MemoryGame : MonoBehaviour
@@ -42,6 +43,7 @@ public class MemoryGame : MonoBehaviour
         success = audioSources[0];
         failure = audioSources[1];
         complete = audioSources[2];
+        audioSources[3].Play();
 
         // Get all cards on GameBoard
         cards = transform.GetComponentsInChildren<Card>();
@@ -166,16 +168,24 @@ public class MemoryGame : MonoBehaviour
 
         if (numMatches == 0)
         {
-            // flip endGame flag to stop paly timer
             endGame = true;
 
-            // call completion scene might need to move complete sound to new scene
-            complete.Play();
+            // execute end simulation coroutine
+            StartCoroutine(EndSimulation());
+
         }
     }
 
     private void SetMatchText()
     {
         matchText.text = "Matches left: " + numMatches.ToString();
+    }
+
+    protected IEnumerator EndSimulation()
+    {
+        // play level complete sound and load LevelCompletion scene
+        complete.Play();
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("LevelCompletion");
     }
 }
