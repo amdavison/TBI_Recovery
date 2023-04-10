@@ -11,6 +11,7 @@ TagManager:
   - RoomLight
   - SamplesInfoPanel
   - Rope
+  - FingerTip
   layers:
   - Default
   - TransparentFX
