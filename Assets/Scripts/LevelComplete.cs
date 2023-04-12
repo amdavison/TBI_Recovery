@@ -32,8 +32,10 @@ public class LevelComplete : MonoBehaviour
     {
         if (previousSceneID != null)
         {
+            Debug.Log("Resetting previous");
             Reset();
-            SceneManager.LoadScene(previousSceneID);
+            SceneManager.LoadScene("matchCards");
+            // SceneManager.LoadScene(previousSceneID);
         }
         
     }
