@@ -19,6 +19,9 @@ TagManager:
   - PBJar
   - PBSlice
   - BottomBread
+  - memGame
+  - gasGame
+  - pbGame
   layers:
   - Default
   - TransparentFX
