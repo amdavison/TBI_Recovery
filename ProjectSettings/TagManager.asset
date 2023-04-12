@@ -11,7 +11,17 @@ TagManager:
   - RoomLight
   - SamplesInfoPanel
   - Rope
-  - FingerTip
+  - Plate
+  - WholeSandwich
+  - Knife
+  - Bread
+  - JamJar
+  - PBJar
+  - PBSlice
+  - BottomBread
+  - memGame
+  - gasGame
+  - pbGame
   layers:
   - Default
   - TransparentFX
