@@ -38,6 +38,8 @@ public class MemoryGame : MonoBehaviour
     void Start()
     {
         instance = this;
+        LevelComplete.previousSceneID = "matchCards";
+        LevelComplete.previousSceneName = "Momory Game";
 
         AudioSource[] audioSources = GetComponents<AudioSource>();
         success = audioSources[0];
@@ -123,7 +125,7 @@ public class MemoryGame : MonoBehaviour
         }
 
         // update playTime counter if during game play
-        if (Time.time - waitTime > playTime && !endGame)
+        if (Time.time > playTime + waitTime && !endGame)
         {
             timeText.text = "Time: " + playTime.ToString();
             playTime++;
@@ -169,6 +171,8 @@ public class MemoryGame : MonoBehaviour
         if (numMatches == 0)
         {
             endGame = true;
+
+            LevelComplete.completionTime = --playTime;
 
             // execute end simulation coroutine
             StartCoroutine(EndSimulation());
