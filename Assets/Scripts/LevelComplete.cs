@@ -37,8 +37,6 @@ public class LevelComplete : MonoBehaviour
         {
             Debug.Log("Resetting to " + previousSceneID);
             LoadNextScene(previousSceneID);
-            // Reset(previousSceneID);
-            // SceneManager.LoadScene(previousSceneID);
         }
         
     }
@@ -47,8 +45,6 @@ public class LevelComplete : MonoBehaviour
     {
         Debug.Log("Resetting to Lobby");
         LoadNextScene("Lobby");
-        // Reset("Lobby");
-        // SceneManager.LoadScene("Lobby");
     }
 
     private void LoadNextScene(string scene)
