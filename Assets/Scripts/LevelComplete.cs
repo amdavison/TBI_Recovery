@@ -30,11 +30,14 @@ public class LevelComplete : MonoBehaviour
 
     public void LoadPreviousScene()
     {
+        Debug.Log("Previous scene: " + previousSceneID);
+        Debug.Log(previousSceneID == null);
+
         if (previousSceneID != null)
         {
-            Debug.Log("Resetting previous");
-            Reset();
-            SceneManager.LoadScene("matchCards");
+            Debug.Log("Resetting to " + previousSceneID);
+            LoadNextScene(previousSceneID);
+            // Reset(previousSceneID);
             // SceneManager.LoadScene(previousSceneID);
         }
         
@@ -42,14 +45,17 @@ public class LevelComplete : MonoBehaviour
 
     public void LoadLobby()
     {
-        Reset();
+        Debug.Log("Resetting to Lobby");
+        LoadNextScene("Lobby");
+        // Reset("Lobby");
         // SceneManager.LoadScene("Lobby");
-        Application.Quit();
     }
 
-    void Reset()
+    private void LoadNextScene(string scene)
     {
+        Debug.Log("Loading scene: " + scene);
         previousSceneID = previousSceneName = null;
         completionTime = 0.0;
+        SceneManager.LoadScene(scene);
     }
 }

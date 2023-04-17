@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     private AudioSource cardFlip;
 
     Collider selector;
+    MemoryGame memoryGame;
 
     public void SetSuitAndRank(string newSuit, string newRank)
     {

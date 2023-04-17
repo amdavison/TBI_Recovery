@@ -27,7 +27,7 @@ public class MemoryGame : MonoBehaviour
     private bool startGame = true;
     private bool endGame = false;
     private int numMatches = 18;
-    private double waitTime = 8.0;
+    readonly private double waitTime = 8.0;
 
     // These are the audio sources
     private AudioSource success;
@@ -67,8 +67,7 @@ public class MemoryGame : MonoBehaviour
         numMatches = cards.Length / 2;
         SetMatchText();
 
-        startTime = Time.time;
-        playTime = startTime;
+        playTime = startTime = 0.0;
     }
 
     private void Shuffle<T>(T[] array)
@@ -104,7 +103,7 @@ public class MemoryGame : MonoBehaviour
             else
             {
                 selectTwo = card;
-                selectTime = Time.time;
+                selectTime = Time.timeSinceLevelLoad;
             }
         }
     }
@@ -114,7 +113,7 @@ public class MemoryGame : MonoBehaviour
     {
         if (startGame == true)
         {
-            if (Time.time > startTime + waitTime)
+            if (Time.timeSinceLevelLoad > startTime + waitTime)
             {
                 foreach (Card card in cards)
                 {
@@ -125,7 +124,7 @@ public class MemoryGame : MonoBehaviour
         }
 
         // update playTime counter if during game play
-        if (Time.time > playTime + waitTime && !endGame)
+        if (Time.timeSinceLevelLoad > playTime + waitTime && !endGame)
         {
             timeText.text = "Time: " + playTime.ToString();
             playTime++;
@@ -135,7 +134,7 @@ public class MemoryGame : MonoBehaviour
         if (selectTwo != null)
         {
             // wait one secod so user can see card
-            if (Time.time > selectTime + 1.0)
+            if (Time.timeSinceLevelLoad > selectTime + 1.0)
             {
                 CheckMatch();
             }
@@ -171,7 +170,6 @@ public class MemoryGame : MonoBehaviour
         if (numMatches == 0)
         {
             endGame = true;
-
             LevelComplete.completionTime = --playTime;
 
             // execute end simulation coroutine
