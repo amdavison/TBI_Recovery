@@ -7,10 +7,10 @@ public class Card : MonoBehaviour
     private string suit;
     private string rank;
     private bool faceUp = true;
-    private bool isSelected = false;
     private AudioSource cardFlip;
 
     Collider selector;
+    MemoryGame memoryGame;
 
     public void SetSuitAndRank(string newSuit, string newRank)
     {
@@ -49,22 +49,22 @@ public class Card : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider otherCollider)
     {
-        if (!isSelected && !faceUp)
+        Debug.Log("Trigger event");
+        if (!faceUp)
         {
-            Debug.Log("Card face down...");
+            Debug.Log("Card face down");
             MemoryGame.instance.Select(this);
-            selector = other;
-            isSelected = !isSelected;
+            selector = otherCollider;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider otherCollider)
     {
-        if (other == selector && faceUp)
+        Debug.Log("Exiting trigger event");
+        if (otherCollider == selector && faceUp)
         {
-            isSelected = false;
             selector = null;
         }
     }
