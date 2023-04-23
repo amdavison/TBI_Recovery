@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MemoryGame : MonoBehaviour
@@ -26,7 +27,7 @@ public class MemoryGame : MonoBehaviour
     private bool startGame = true;
     private bool endGame = false;
     private int numMatches = 18;
-    private double waitTime = 8.0;
+    readonly private double waitTime = 8.0;
 
     // These are the audio sources
     private AudioSource success;
@@ -37,11 +38,14 @@ public class MemoryGame : MonoBehaviour
     void Start()
     {
         instance = this;
+        LevelComplete.previousSceneID = "matchCards";
+        LevelComplete.previousSceneName = "Momory Game";
 
         AudioSource[] audioSources = GetComponents<AudioSource>();
         success = audioSources[0];
         failure = audioSources[1];
         complete = audioSources[2];
+        audioSources[3].Play();
 
         // Get all cards on GameBoard
         cards = transform.GetComponentsInChildren<Card>();
@@ -63,8 +67,7 @@ public class MemoryGame : MonoBehaviour
         numMatches = cards.Length / 2;
         SetMatchText();
 
-        startTime = Time.time;
-        playTime = startTime;
+        playTime = startTime = 0.0;
     }
 
     private void Shuffle<T>(T[] array)
@@ -100,7 +103,7 @@ public class MemoryGame : MonoBehaviour
             else
             {
                 selectTwo = card;
-                selectTime = Time.time;
+                selectTime = Time.timeSinceLevelLoad;
             }
         }
     }
@@ -110,7 +113,7 @@ public class MemoryGame : MonoBehaviour
     {
         if (startGame == true)
         {
-            if (Time.time > startTime + waitTime)
+            if (Time.timeSinceLevelLoad > startTime + waitTime)
             {
                 foreach (Card card in cards)
                 {
@@ -121,7 +124,7 @@ public class MemoryGame : MonoBehaviour
         }
 
         // update playTime counter if during game play
-        if (Time.time - waitTime > playTime && !endGame)
+        if (Time.timeSinceLevelLoad > playTime + waitTime && !endGame)
         {
             timeText.text = "Time: " + playTime.ToString();
             playTime++;
@@ -131,7 +134,7 @@ public class MemoryGame : MonoBehaviour
         if (selectTwo != null)
         {
             // wait one secod so user can see card
-            if (Time.time > selectTime + 1.0)
+            if (Time.timeSinceLevelLoad > selectTime + 1.0)
             {
                 CheckMatch();
             }
@@ -166,16 +169,25 @@ public class MemoryGame : MonoBehaviour
 
         if (numMatches == 0)
         {
-            // flip endGame flag to stop paly timer
             endGame = true;
+            LevelComplete.completionTime = --playTime;
 
-            // call completion scene might need to move complete sound to new scene
-            complete.Play();
+            // execute end simulation coroutine
+            StartCoroutine(EndSimulation());
+
         }
     }
 
     private void SetMatchText()
     {
         matchText.text = "Matches left: " + numMatches.ToString();
+    }
+
+    protected IEnumerator EndSimulation()
+    {
+        // play level complete sound and load LevelCompletion scene
+        complete.Play();
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("LevelCompletion");
     }
 }

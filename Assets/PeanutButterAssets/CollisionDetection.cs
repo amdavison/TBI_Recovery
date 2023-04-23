@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionDetection : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class CollisionDetection : MonoBehaviour
 
         if (col.gameObject.tag == "Plate")
         {
-            PlateSound.Play();
+            //PlateSound.Play();
             //SlicedSandwich.SetActive(true);
             //Instantiate(Toast, new Vector3((float)-3.967, (float)1.5, (float)-3.044), Quaternion.identity);
         }
@@ -71,20 +72,20 @@ public class CollisionDetection : MonoBehaviour
             {
                 JamSliceKnife.SetActive(false);
                 JamSliceBread.SetActive(true);
+
             }
         }
 
         if (SlicedSandwich.activeSelf == true)
         {
-            EndSimulation();
+            StartCoroutine(EndSimulation());
         }
     }
     protected IEnumerator EndSimulation()
     {
         // just loads the main scene
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(3.0f);
         // add completion audio
-        yield return new WaitForSecondsRealtime(5);
-        //SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("LevelCompletion");
     }
 }
