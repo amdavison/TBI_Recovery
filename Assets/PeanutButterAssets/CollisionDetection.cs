@@ -16,6 +16,12 @@ public class CollisionDetection : MonoBehaviour
     public AudioSource PlateSound;
 
     // Start is called before the first frame update
+
+    void Start()
+    {
+        LevelComplete.previousSceneID = "PeanutButter";
+        LevelComplete.previousSceneName = "PB & J Simulation";
+    }
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "WholeSandwich")
