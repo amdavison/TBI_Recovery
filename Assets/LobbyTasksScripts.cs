@@ -17,10 +17,12 @@ public class LobbyTasksScripts : MonoBehaviour
     public GameObject gasConfirm;
     public GameObject pbConfirm;
     public GameObject pbTutorialVid;
+    public GameObject cmTutorialVid;
     public GameObject pbTutorialButton;
     public GameObject gasTutorialButton;
     public GameObject cardsTutorialButton;
     public VideoPlayer pbvideoPlayer;
+    public VideoPlayer cmvideoPlayer;
 
 
 
@@ -94,6 +96,21 @@ public class LobbyTasksScripts : MonoBehaviour
         cardsTutorialButton.SetActive(false);
         pbTutorialVid.SetActive(true);
         pbvideoPlayer.Play();
+        returnButton.SetActive(true);
+
+    }
+
+    public void cmTutorial()
+    {
+        TBIRStitle.SetActive(false);
+        cardButton.SetActive(false);
+        gasButton.SetActive(false);
+        pbButton.SetActive(false);
+        pbTutorialButton.SetActive(false);
+        gasTutorialButton.SetActive(false);
+        cardsTutorialButton.SetActive(false);
+        cmTutorialVid.SetActive(true);
+        cmvideoPlayer.Play();
         returnButton.SetActive(true);
 
     }
