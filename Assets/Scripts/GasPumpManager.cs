@@ -69,11 +69,13 @@ public class GasPumpManager : MonoBehaviour
     public void pumpLifted()
     {
         filling = false;
+        capOutline.SetActive(true);
         Debug.Log(filling);
     }
     public void pumpPlaced()
     {
         filling = true;
+        capOutline.SetActive(false) ;    
         Debug.Log(filling);
     }
 
