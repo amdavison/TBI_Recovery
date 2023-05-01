@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public Animator transition;
-    public float transitionTime = 1.5f;
+    public float transitionTime = 1.75f;
 
     IEnumerator LoadLevel(string name)
     {
         // Play Anim
         transition.SetTrigger("Start");
         // Wait
-
         yield return new WaitForSeconds(transitionTime);
 
         // Load Scene
