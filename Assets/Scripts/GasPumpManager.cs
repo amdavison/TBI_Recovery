@@ -16,6 +16,7 @@ public class GasPumpManager : MonoBehaviour
 
     public GameObject card;
     public GameObject cardOutline;
+    public GameObject staticCard;
 
     public GameObject button;
     public GameObject buttonOutline;
@@ -28,6 +29,7 @@ public class GasPumpManager : MonoBehaviour
 
     public Boolean filling = false;
     private float count = 0.0f;
+    private Boolean fillingDone = false; 
 
     void Start()
     {
@@ -44,6 +46,8 @@ public class GasPumpManager : MonoBehaviour
     public void prepareButton()
     {
         cardOutline.SetActive(false);
+        card.SetActive(false);
+        staticCard.SetActive(true);
         button.GetComponent<ButtonVr>().enabled = true;
         cardGrab.IsGrabbable = false;
         buttonOutline.SetActive(true);
@@ -68,9 +72,12 @@ public class GasPumpManager : MonoBehaviour
     }
     public void pumpLifted()
     {
-        filling = false;
-        capOutline.SetActive(true);
-        Debug.Log(filling);
+        if (!fillingDone)
+        {
+            filling = false;
+            capOutline.SetActive(true);
+            Debug.Log(filling);
+        }
     }
     public void pumpPlaced()
     {
@@ -97,7 +104,8 @@ public class GasPumpManager : MonoBehaviour
             {
                 filling = false;
                 Debug.Log("Time Done");
-                taskMan.MarkTaskCompletion(5); 
+                taskMan.MarkTaskCompletion(5);
+                fillingDone = true;
             }
         }
     }

@@ -34,8 +34,6 @@ public class GasTaskManager : TaskManager
             Debug.Log(taskID + " " + taskNum);
             videoInstructions[0].SetActive(false);
             videoInstructions[1].SetActive(true);
-            StartCoroutine(EndSimulation());
-
         }
         else if (taskID == 1)
         {

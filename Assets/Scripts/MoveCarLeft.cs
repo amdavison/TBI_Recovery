@@ -6,7 +6,7 @@ public class MoveCarLeft : MonoBehaviour
 {
     public string direction;
 
-    private float leftX = 30.0f;
+    private float leftX = 50.0f;
     private float rightX = -140.0f;
 
     private Transform car;
