@@ -14,6 +14,7 @@ public class CollisionDetection : MonoBehaviour
     public GameObject PBSliceBread;
     public AudioSource BreadSlice;
     public AudioSource PlateSound;
+    public AudioSource complete;
 
     // Start is called before the first frame update
 
@@ -55,6 +56,8 @@ public class CollisionDetection : MonoBehaviour
         if (col.gameObject.tag == "PBJar")
         {
             PBSliceKnife.SetActive(true);
+            JamSliceKnife.SetActive(false);
+            Bread1.tag = "BottomBread";
 
            
         }
@@ -68,6 +71,7 @@ public class CollisionDetection : MonoBehaviour
         if (col.gameObject.tag == "JamJar")
         {
             JamSliceKnife.SetActive(true);
+            PBSliceKnife.SetActive(false);
 
             
         }
@@ -78,6 +82,7 @@ public class CollisionDetection : MonoBehaviour
             {
                 JamSliceKnife.SetActive(false);
                 JamSliceBread.SetActive(true);
+                Bread2.tag = "WholeSandwich";
 
             }
         }
@@ -89,6 +94,7 @@ public class CollisionDetection : MonoBehaviour
     }
     protected IEnumerator EndSimulation()
     {
+        complete.Play();
         // just loads the main scene
         yield return new WaitForSecondsRealtime(3.0f);
         // add completion audio
