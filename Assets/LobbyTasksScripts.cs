@@ -20,8 +20,8 @@ public class LobbyTasksScripts : MonoBehaviour
     public GameObject pbTutorialButton;
     public GameObject gasTutorialButton;
     public GameObject cardsTutorialButton;
-    public VideoPlayer pbvideoPlayer;
-    public VideoPlayer gasVideoPlayer;
+    public GameObject pbvideoPlayer;
+    public GameObject gasVideoPlayer;
 
     private bool pressed = false;
 
@@ -106,6 +106,8 @@ public class LobbyTasksScripts : MonoBehaviour
         gasConfirm.SetActive(false);
         cardConfirm.SetActive(false);
         pbConfirm.SetActive(false);
+        pbvideoPlayer.SetActive(false);
+        gasVideoPlayer.SetActive(false);
         pbTutorialVid.SetActive(false);
         returnButton.SetActive(false);
     }
@@ -127,7 +129,7 @@ public class LobbyTasksScripts : MonoBehaviour
         gasTutorialButton.SetActive(false);
         cardsTutorialButton.SetActive(false);
         pbTutorialVid.SetActive(true);
-        pbvideoPlayer.Play();
+        pbvideoPlayer.SetActive(true);
         returnButton.SetActive(true);
     }
 
@@ -148,7 +150,7 @@ public class LobbyTasksScripts : MonoBehaviour
         gasTutorialButton.SetActive(false);
         cardsTutorialButton.SetActive(false);
         pbTutorialVid.SetActive(true);
-        gasVideoPlayer.Play();
+        gasVideoPlayer.SetActive(true);
         returnButton.SetActive(true);
     }
 

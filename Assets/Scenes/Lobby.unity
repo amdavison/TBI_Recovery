@@ -512,8 +512,8 @@ MonoBehaviour:
   pbTutorialButton: {fileID: 588667771}
   gasTutorialButton: {fileID: 924131483}
   cardsTutorialButton: {fileID: 543631239}
-  pbvideoPlayer: {fileID: 917074945}
-  gasVideoPlayer: {fileID: 2093063768}
+  pbvideoPlayer: {fileID: 917074943}
+  gasVideoPlayer: {fileID: 2093063767}
 --- !u!4 &364460617
 Transform:
   m_ObjectHideFlags: 0
@@ -1654,7 +1654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &917074944
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1702,7 +1702,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
   m_WaitForFirstFrame: 1
@@ -2510,6 +2510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 167.72942
+      objectReference: {fileID: 0}
+    - target: {fileID: 560068449474413502, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 33.90563
       objectReference: {fileID: 0}
     - target: {fileID: 623879050362998257, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
         type: 3}
@@ -5221,7 +5226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!328 &2093063768
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -5251,7 +5256,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
   m_WaitForFirstFrame: 1
