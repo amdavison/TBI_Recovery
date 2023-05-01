@@ -39,7 +39,7 @@ public class MemoryGame : MonoBehaviour
     {
         instance = this;
         LevelComplete.previousSceneID = "matchCards";
-        LevelComplete.previousSceneName = "Momory Game";
+        LevelComplete.previousSceneName = "Memory Game";
 
         AudioSource[] audioSources = GetComponents<AudioSource>();
         success = audioSources[0];
