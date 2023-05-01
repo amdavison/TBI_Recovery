@@ -14,6 +14,8 @@ public class LevelComplete : MonoBehaviour
     public TextMeshProUGUI completionText;
     public TextMeshProUGUI timeText;
 
+    public SceneChanger scenChan;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,6 @@ public class LevelComplete : MonoBehaviour
         Debug.Log("Loading scene: " + scene);
         previousSceneID = previousSceneName = null;
         completionTime = 0.0;
-        SceneManager.LoadScene(scene);
+        scenChan.changeScene(scene);
     }
 }
