@@ -27,6 +27,11 @@ public class GasPumpManager : MonoBehaviour
     public UxrGrabbableObject cardGrab;
     public UxrGrabbableObject handleGrab;
 
+    public AudioSource done;
+    public AudioSource fillingAudio;
+    public AudioSource pickup;
+    public AudioSource takeout;
+
     public Boolean filling = false;
     private float count = 0.0f;
     private Boolean fillingDone = false; 
@@ -72,6 +77,8 @@ public class GasPumpManager : MonoBehaviour
     }
     public void pumpLifted()
     {
+        takeout.Play();
+
         if (!fillingDone)
         {
             filling = false;
@@ -81,9 +88,13 @@ public class GasPumpManager : MonoBehaviour
     }
     public void pumpPlaced()
     {
-        filling = true;
-        capOutline.SetActive(false) ;    
-        Debug.Log(filling);
+        if (!fillingDone)
+        {
+            fillingAudio.Play();
+            filling = true;
+            capOutline.SetActive(false);
+            Debug.Log(filling);
+        }
     }
 
 
@@ -92,10 +103,10 @@ public class GasPumpManager : MonoBehaviour
     {
         if (filling)
         {
-            if (count < 13.37)
+            if (count < 35)
             {
-                price.text = (count * 3.39).ToString("0.00");
-                gallons.text = (count).ToString("0.00");
+                price.text = (count/2.6f * 3.39).ToString("0.00");
+                gallons.text = (count/2.6f).ToString("0.00");
 
                 count += Time.deltaTime;
 
@@ -106,6 +117,8 @@ public class GasPumpManager : MonoBehaviour
                 Debug.Log("Time Done");
                 taskMan.MarkTaskCompletion(5);
                 fillingDone = true;
+                done.Play();
+                fillingAudio.Stop();
             }
         }
     }
