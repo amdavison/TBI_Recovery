@@ -69,7 +69,6 @@ public class LobbyTasksScripts : MonoBehaviour
         pbTutorialButton.SetActive(false);
         gasTutorialButton.SetActive(false);
         cardsTutorialButton.SetActive(false);
-        StartCoroutine(PressCooldown());
     }
 
     public void pbButtonConfirm()
@@ -119,9 +118,8 @@ public class LobbyTasksScripts : MonoBehaviour
         pbvideoPlayer.SetActive(false);
         gasVideoPlayer.SetActive(false);
         pbTutorialVid.SetActive(false);
-        cmvideoPlayer.SetActive(true);
+        cmvideoPlayer.SetActive(false);
         returnButton.SetActive(false);
-        cmvideoPlayer.GetComponent<VideoPlayer>().SetDirectAudioMute(0,true);
     }
 
     public void pbTutorial()
@@ -168,6 +166,13 @@ public class LobbyTasksScripts : MonoBehaviour
 
     public void cmTutorial()
     {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
         TBIRStitle.SetActive(false);
         cardButton.SetActive(false);
         gasButton.SetActive(false);
@@ -176,7 +181,6 @@ public class LobbyTasksScripts : MonoBehaviour
         gasTutorialButton.SetActive(false);
         cardsTutorialButton.SetActive(false);
         pbTutorialVid.SetActive(true);
-        cmvideoPlayer.GetComponent<VideoPlayer>().SetDirectAudioMute(0, false);
         cmvideoPlayer.SetActive(true);
         returnButton.SetActive(true);
 

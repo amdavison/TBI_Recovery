@@ -14315,6 +14315,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e354d358504dda348906c1641e3e4db9, type: 3}
+--- !u!1 &680322246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2923423526928159772, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1532242163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &688551943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f3fa10f19205cba40befc6cb4cf7648c,
@@ -33774,6 +33780,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 095063c1cb89fa84b9cca6c555f7194c, type: 2}
+    - target: {fileID: 6593082190070547537, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
+        type: 3}
+      propertyPath: instructionCanvas
+      value: 
+      objectReference: {fileID: 680322246}
     - target: {fileID: 6834685720917456649, guid: 5d22c16ae19bd78409bbbdf0ab1385f7,
         type: 3}
       propertyPath: m_IsActive
