@@ -17,23 +17,24 @@ public class LobbyTasksScripts : MonoBehaviour
     public GameObject gasConfirm;
     public GameObject pbConfirm;
     public GameObject pbTutorialVid;
-    public GameObject cmTutorialVid;
     public GameObject pbTutorialButton;
     public GameObject gasTutorialButton;
     public GameObject cardsTutorialButton;
-    public VideoPlayer pbvideoPlayer;
-    public VideoPlayer cmvideoPlayer;
+    public GameObject pbvideoPlayer;
+    public GameObject gasVideoPlayer;
+    public GameObject cmvideoPlayer;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private bool pressed = false;
 
     public void cardButtonConfirm()
     {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
         TBIRStitle.SetActive(false);
         confirmTitle.SetActive(true);
         cardButton.SetActive(false);
@@ -44,11 +45,17 @@ public class LobbyTasksScripts : MonoBehaviour
         cardsTutorialButton.SetActive(false);
         cardConfirm.SetActive(true);
         returnButton.SetActive(true);
-
     }
 
     public void gasButtonConfirm()
     {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
         TBIRStitle.SetActive(false);
         confirmTitle.SetActive(true);
         cardButton.SetActive(false);
@@ -59,11 +66,20 @@ public class LobbyTasksScripts : MonoBehaviour
         cardsTutorialButton.SetActive(false);
         gasConfirm.SetActive(true);
         returnButton.SetActive(true);
-
+        pbTutorialButton.SetActive(false);
+        gasTutorialButton.SetActive(false);
+        cardsTutorialButton.SetActive(false);
     }
 
     public void pbButtonConfirm()
     {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
         TBIRStitle.SetActive(false);
         confirmTitle.SetActive(true);
         cardButton.SetActive(false);
@@ -74,11 +90,20 @@ public class LobbyTasksScripts : MonoBehaviour
         cardsTutorialButton.SetActive(false);
         pbConfirm.SetActive(true);
         returnButton.SetActive(true);
-
+        pbTutorialButton.SetActive(false);
+        gasTutorialButton.SetActive(false);
+        cardsTutorialButton.SetActive(false);
     }
 
     public void cancelButton()
     {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
         TBIRStitle.SetActive(true);
         confirmTitle.SetActive(false);
         cardButton.SetActive(true);
@@ -90,14 +115,22 @@ public class LobbyTasksScripts : MonoBehaviour
         gasConfirm.SetActive(false);
         cardConfirm.SetActive(false);
         pbConfirm.SetActive(false);
+        pbvideoPlayer.SetActive(false);
+        gasVideoPlayer.SetActive(false);
         pbTutorialVid.SetActive(false);
-        cmTutorialVid.SetActive(false);
+        cmvideoPlayer.SetActive(false);
         returnButton.SetActive(false);
-        cmvideoPlayer.SetDirectAudioMute(0,true);
     }
 
     public void pbTutorial()
     {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
         TBIRStitle.SetActive(false);
         cardButton.SetActive(false);
         gasButton.SetActive(false);
@@ -106,13 +139,19 @@ public class LobbyTasksScripts : MonoBehaviour
         gasTutorialButton.SetActive(false);
         cardsTutorialButton.SetActive(false);
         pbTutorialVid.SetActive(true);
-        pbvideoPlayer.Play();
+        pbvideoPlayer.SetActive(true);
         returnButton.SetActive(true);
-
     }
 
-    public void cmTutorial()
+    public void gasTutorial()
     {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
         TBIRStitle.SetActive(false);
         cardButton.SetActive(false);
         gasButton.SetActive(false);
@@ -120,16 +159,35 @@ public class LobbyTasksScripts : MonoBehaviour
         pbTutorialButton.SetActive(false);
         gasTutorialButton.SetActive(false);
         cardsTutorialButton.SetActive(false);
-        cmTutorialVid.SetActive(true);
-        cmvideoPlayer.SetDirectAudioMute(0, false);
-        cmvideoPlayer.Play();
+        pbTutorialVid.SetActive(true);
+        gasVideoPlayer.SetActive(true);
+        returnButton.SetActive(true);
+    }
+
+    public void cmTutorial()
+    {
+        if (pressed)
+        {
+            return;
+        }
+        pressed = true;
+        StartCoroutine(PressCooldown());
+
+        TBIRStitle.SetActive(false);
+        cardButton.SetActive(false);
+        gasButton.SetActive(false);
+        pbButton.SetActive(false);
+        pbTutorialButton.SetActive(false);
+        gasTutorialButton.SetActive(false);
+        cardsTutorialButton.SetActive(false);
+        pbTutorialVid.SetActive(true);
+        cmvideoPlayer.SetActive(true);
         returnButton.SetActive(true);
 
     }
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator PressCooldown()
     {
-        
+        yield return new WaitForSecondsRealtime(1.5f);
+        pressed = false;
     }
 }

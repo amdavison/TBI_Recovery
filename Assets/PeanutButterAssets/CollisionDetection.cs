@@ -15,13 +15,14 @@ public class CollisionDetection : MonoBehaviour
     public AudioSource BreadSlice;
     public AudioSource PlateSound;
     public AudioSource complete;
+    public SceneChanger scenChang;
+
 
     // Start is called before the first frame update
 
     void Start()
     {
-        LevelComplete.previousSceneID = "PeanutButter";
-        LevelComplete.previousSceneName = "PB & J Simulation";
+
     }
     void OnCollisionEnter(Collision col)
     {
@@ -92,12 +93,12 @@ public class CollisionDetection : MonoBehaviour
             StartCoroutine(EndSimulation());
         }
     }
-    protected IEnumerator EndSimulation()
+    IEnumerator EndSimulation()
     {
         complete.Play();
-        // just loads the main scene
-        yield return new WaitForSecondsRealtime(3.0f);
-        // add completion audio
-        SceneManager.LoadScene("LevelCompletion");
+        LevelComplete.previousSceneID = "PeanutButter";
+        LevelComplete.previousSceneName = "PB & J Simulation";
+        yield return new WaitForSecondsRealtime(3);
+        scenChang.changeScene("LevelCompletion");
     }
 }

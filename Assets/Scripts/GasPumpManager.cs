@@ -16,6 +16,7 @@ public class GasPumpManager : MonoBehaviour
 
     public GameObject card;
     public GameObject cardOutline;
+    public GameObject staticCard;
 
     public GameObject button;
     public GameObject buttonOutline;
@@ -26,8 +27,14 @@ public class GasPumpManager : MonoBehaviour
     public UxrGrabbableObject cardGrab;
     public UxrGrabbableObject handleGrab;
 
+    public AudioSource done;
+    public AudioSource fillingAudio;
+    public AudioSource pickup;
+    public AudioSource takeout;
+
     public Boolean filling = false;
     private float count = 0.0f;
+    private Boolean fillingDone = false; 
 
     void Start()
     {
@@ -44,6 +51,8 @@ public class GasPumpManager : MonoBehaviour
     public void prepareButton()
     {
         cardOutline.SetActive(false);
+        card.SetActive(false);
+        staticCard.SetActive(true);
         button.GetComponent<ButtonVr>().enabled = true;
         cardGrab.IsGrabbable = false;
         buttonOutline.SetActive(true);
@@ -68,13 +77,24 @@ public class GasPumpManager : MonoBehaviour
     }
     public void pumpLifted()
     {
-        filling = false;
-        Debug.Log(filling);
+        takeout.Play();
+
+        if (!fillingDone)
+        {
+            filling = false;
+            capOutline.SetActive(true);
+            Debug.Log(filling);
+        }
     }
     public void pumpPlaced()
     {
-        filling = true;
-        Debug.Log(filling);
+        if (!fillingDone)
+        {
+            fillingAudio.Play();
+            filling = true;
+            capOutline.SetActive(false);
+            Debug.Log(filling);
+        }
     }
 
 
@@ -83,10 +103,10 @@ public class GasPumpManager : MonoBehaviour
     {
         if (filling)
         {
-            if (count < 13.37)
+            if (count < 35)
             {
-                price.text = (count * 3.39).ToString("0.00");
-                gallons.text = (count).ToString("0.00");
+                price.text = (count/2.6f * 3.39).ToString("0.00");
+                gallons.text = (count/2.6f).ToString("0.00");
 
                 count += Time.deltaTime;
 
@@ -95,7 +115,10 @@ public class GasPumpManager : MonoBehaviour
             {
                 filling = false;
                 Debug.Log("Time Done");
-                taskMan.MarkTaskCompletion(5); 
+                taskMan.MarkTaskCompletion(5);
+                fillingDone = true;
+                done.Play();
+                fillingAudio.Stop();
             }
         }
     }

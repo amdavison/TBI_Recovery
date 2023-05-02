@@ -16,7 +16,9 @@ public class MemoryGame : MonoBehaviour
 
     // There is only one Memory Game at a time
     static public MemoryGame instance;
-    
+    public SceneChanger scenChang;
+
+
     // These are local state
     private Card[] cards;
     private Card selectOne;
@@ -185,9 +187,10 @@ public class MemoryGame : MonoBehaviour
 
     protected IEnumerator EndSimulation()
     {
-        // play level complete sound and load LevelCompletion scene
         complete.Play();
-        yield return new WaitForSeconds(3.0f);
-        SceneManager.LoadScene("LevelCompletion");
+        LevelComplete.previousSceneID = "matchCards";
+        LevelComplete.previousSceneName = "Memory Game";
+        yield return new WaitForSecondsRealtime(3);
+        scenChang.changeScene("LevelCompletion");
     }
 }

@@ -11,19 +11,24 @@ public class GasActivityManager : ActivityManager
     public void MarkActivityCompletion()
     {
         base.MarkActivityCompletion();
-
+        Debug.Log("activity completed");
         if (activityCount == 1 || true)
         {
-            EndSimulation();
+            Debug.Log("finished");
+            StartCoroutine(EndSimulation());
         }
     }
 
     protected override IEnumerator EndSimulation()
     {
+        LevelComplete.previousSceneID = "gasStation";
+        LevelComplete.previousSceneName = "Gas Station";
         // just loads the main scene
         yield return new WaitForSecondsRealtime(5);
         EndAudio.Play();
-        yield return new WaitForSecondsRealtime(5);
-        //SceneManager.LoadScene("Main");
+        Debug.Log("Sound");
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene("LevelCompletion");
+        Debug.Log("loading scene?");
     }
 }
